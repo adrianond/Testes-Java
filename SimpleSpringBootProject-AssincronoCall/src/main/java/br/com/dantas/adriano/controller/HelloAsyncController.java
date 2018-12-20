@@ -11,7 +11,7 @@ public class HelloAsyncController {
 	@Autowired
 	private AsyncService helloService;
 
-	@RequestMapping("/")
+	@RequestMapping("/hello")
 	public String hello() {
 		String mensagemRetorno = "Sucesso na primeira chamada!";
 		try {
