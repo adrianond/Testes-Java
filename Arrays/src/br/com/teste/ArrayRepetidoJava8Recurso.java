@@ -16,6 +16,12 @@ public class ArrayRepetidoJava8Recurso {
 	}
 
 	private static String[] tirarRepetidos(String[] repetidos) {
+		Stream<String> stream = Arrays.stream(repetidos);
+		System.out.println("stream com valores repetidos");
+		stream.forEach(System.out::println);
+		System.out.println("-----------------------------------------------------------------------------------------");
+		
+		System.out.println("stream com valores repetidos");
 		Stream<String> stream1 = Arrays.stream(repetidos).distinct();
 		String[] teste = stream1.toArray(String[]::new);
 		return  teste;

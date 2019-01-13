@@ -22,8 +22,7 @@ public class TreeSetPessoas2 {
 		set.add(new Pessoa2("Felipe", "Coelho"));
 		set.add(new Pessoa2("Adriano", "Dantas"));
 		
-		System.out.println("Imprime o TreeSet<Pessoa>, como se trata de um objeto customizado 'Pessoa', "
-				+ "deve ser implementado o sort do objeto - neste caso por ordem alfabética ou tamanho da String");
+		System.out.println("Imprime o TreeSet<Pessoa2>, a classe Pessoa2Comparator implementa Comparator");
 		set.forEach((Pessoa2 p) -> {
 			Pessoa2 pessoa = new Pessoa2();
 			pessoa.setNome(p.getNome());
@@ -37,9 +36,9 @@ public class TreeSetPessoas2 {
 		List<Pessoa2> listPessoa2 = Arrays.asList(new Pessoa2("Arlanio", "Dantas"), new Pessoa2("Arlanio", "Dantas"),new Pessoa2("Carlos", "Coelho"), new Pessoa2("Jose", "Silva"), new Pessoa2("Cesar", "Castilho"));
 		
 		TreeSet<Pessoa2> t = retornarPessoas(listPessoa, listPessoa2);
-		System.out.println("Imprime o TreeSet<Pessoa>");
+		System.out.println("Imprime o TreeSet<Pessoa2>");
 		System.out.println("Imprime não adiciona dados repetidos");
-		System.out.println("Imprime o ordena em ordem crescente, pois foi implementado o comparator para o obejto Pessoa");
+		System.out.println("Imprime o ordena em ordem crescente, pois a classe Pessoa2Comparator implementou Comparator");
 		t.forEach((Pessoa2 p) -> {
 				Pessoa2 pessoa = new Pessoa2();
 				pessoa.setNome(p.getNome());

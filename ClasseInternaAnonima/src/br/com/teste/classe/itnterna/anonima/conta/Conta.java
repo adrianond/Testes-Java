@@ -18,10 +18,10 @@ public class Conta implements Comparator<Conta> {
 
 	@Override
 	public int compare(Conta conta, Conta outraConta) {
-		//compara a lista pela ordem alfabetica da string
+		//ordena a lista pela ordem alfabetica da string
 		return conta.getTitular().compareTo(outraConta.getTitular());
 		
-		//compara lista pelo tamanho da string
+		//ordena lista pelo tamanho da string
 		//return Integer.compare(conta.getTitular().length(), outraConta.getTitular().length());
 	}
 	

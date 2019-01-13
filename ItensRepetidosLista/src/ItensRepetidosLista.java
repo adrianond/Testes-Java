@@ -4,10 +4,6 @@ import java.util.List;
 
 public class ItensRepetidosLista {
 
-	static String valor = "";
-	private static List<String> listRepetidos = new ArrayList<>();
-	private static List<String> listaConcatenda = new ArrayList<String>();
-
 	public static void main(String[] args) {
 
 		List<String> items = new ArrayList<>();
@@ -19,76 +15,117 @@ public class ItensRepetidosLista {
 		items.add("D");
 		items.add("E");
 		items.add("E");
+
+		List<String> terceiraLista = Arrays.asList("A", "B","E","E");
+		List<String> quartaLista = Arrays.asList("A", "B", "C", "D");
+
+		imprimeValoresRepetidos(items);
+		removeRepetidos(items);
+		imprimeValoresRepetidoDeDuasListas(terceiraLista, quartaLista);
+		imprimeSemRepetidosDuasListas(terceiraLista, quartaLista);
+}
 		
-	   List<String> segundaLista = Arrays.asList("A","A","B","C","C","D","E","E");
-	   List<String> terceiraLista = Arrays.asList("A","B","E");
-	   List<String> quartaLista = Arrays.asList("A","B","C","D");
-	   
-	   
-
-		//List<String> resultado = imprimeRepetido(items);
-		//List<String> resultado = imprimeSemRepetido2(items, segundaLista);
-	  // List<String> resultado = imprimeRepetido3(terceiraLista, quartaLista);
-		List<String> resultado = imprimeSemRepetidosDuasListas(terceiraLista, quartaLista);
-		System.out.println(resultado);
-		System.out.println(resultado.size());
-
-	}
-
-	private static List<String> imprimeSemRepetidosDuasListas(List<String> terceiraLista, List<String> quartaLista) {
+	/**
+	 * Remove os elementos repetidos em duas listas, imprime elementos com
+	 * apenas uma ocorrencia
+	 * 
+	 * @param terceiraLista
+	 * @param quartaLista
+	 * @return
+	 */
+	private static void imprimeSemRepetidosDuasListas(List<String> terceiraLista, List<String> quartaLista) {
+		
+		List<String> listaConcatenda = new ArrayList<String>();
 		listaConcatenda.addAll(terceiraLista);
 		listaConcatenda.addAll(quartaLista);
+		
 		for (int i = 0; i < listaConcatenda.size(); i++) {
-			 String indiceAtual = listaConcatenda.get(i);
-		  for (int j = i + 1; j < listaConcatenda.size(); j++) {
-		     String proximoElemento = listaConcatenda.get(j);
-		       if (indiceAtual.equals(proximoElemento)) {
-		    	   listaConcatenda.remove(j);
-		       }
-		  }
+			String indiceAtual = listaConcatenda.get(i);
+			for (int j = i + 1; j < listaConcatenda.size(); j++) {
+				String proximoElemento = listaConcatenda.get(j);
+				if (indiceAtual.equals(proximoElemento)) {
+					listaConcatenda.remove(j);
+				}
+			}
 		}
-		return listaConcatenda;
+		System.out.println("Remove valores repetidos de duas listas e imprime em outra lista");
+		System.out.println(listaConcatenda);
+		System.out.println(listaConcatenda.size());
+		System.out.println("------------------------------------------------------------------------------");
 	}
 
-	private static List<String> imprimeRepetido(List<String> items) {
+	/**
+	 * cria uma lista com apenas os valores repetidos de outra lista
+	 * 
+	 * @param items
+	 * @return
+	 */
+	private static void imprimeValoresRepetidos(List<String> items) {
+
+		List<String> listRepetidos = new ArrayList<>();
+
 		for (int i = 0; i < items.size(); i++) {
 			String atual = items.get(i);
 			for (int j = i + 1; j < items.size(); j++) {
 				String proxima = items.get(j);
 				if (atual.equals(proxima)) {
-					valor = atual;
-					listRepetidos.add(valor);
+					listRepetidos.add(proxima);
 				}
 			}
 		}
-		return listRepetidos;
+		System.out.println("Imprime valores repetidos de uma lista");
+		System.out.println(listRepetidos);
+		System.out.println(listRepetidos.size());
+		System.out.println("------------------------------------------------------------------------------");
 	}
 
-	private static List<String> imprimeSemRepetido2(List<String> items, List<String> segundaLista) {
+	/**
+	 * Remove os valores repetidos da lista
+	 * 
+	 * @param items
+	 * @return
+	 */
+	private static void removeRepetidos(List<String> items) {
+
 		for (int i = 0; i < items.size(); i++) {
 			String atual = items.get(i);
-			for (int j = 0; j < segundaLista.size(); j++) {
-				String proxima = segundaLista.get(j);
+			for (int j = i + 1; j < items.size(); j++) {
+				String proxima = items.get(j);
 				if (atual.equals(proxima)) {
-					items.remove(i);
+					items.remove(j);
 				}
 			}
 		}
-		return items;
+		System.out.println("Remove os valores repetidos da lista");
+		System.out.println(items);
+		System.out.println(items.size());
+		System.out.println("------------------------------------------------------------------------------");
 	}
 
-	private static List<String> imprimeRepetido3(List<String> items, List<String> segundaLista) {
+	/**
+	 * Cria uma terceira lista com os valores que são repetidos em duas listas
+	 * 
+	 * @param items
+	 * @param segundaLista
+	 * @return
+	 */
+	private static void imprimeValoresRepetidoDeDuasListas(List<String> items, List<String> segundaLista) {
+
+		List<String> listRepetidos = new ArrayList<>();
+
 		for (int i = 0; i < items.size(); i++) {
-			String atual = items.get(i);
+			String valuePrimeiraLista = items.get(i);
 			for (int j = 0; j < segundaLista.size(); j++) {
-				String proxima = segundaLista.get(j);
-				if (atual.equals(proxima)) {
-					valor = atual;
-					listRepetidos.add(valor);
+				String valueSegundaLista = segundaLista.get(j);
+				if (valuePrimeiraLista.equals(valueSegundaLista)) {
+					listRepetidos.add(valueSegundaLista);
 				}
 			}
 		}
-		return listRepetidos;
+		System.out.println("Cria uma terceira lista com os valores que são repetidos em duas listas");
+		System.out.println(listRepetidos);
+		System.out.println(listRepetidos.size());
+		System.out.println("------------------------------------------------------------------------------");
 	}
 
 }

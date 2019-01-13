@@ -1,8 +1,10 @@
 package teste.com.lista;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.TreeMap;
 
 import teste.com.pessoa.Pessoa;
 import teste.com.pessoa.Pessoa2;
@@ -16,9 +18,11 @@ public class ListPessoas {
 	
 	public static void main(String[] args) {
 		
-		List<Pessoa> listPessoa = Arrays.asList(new Pessoa("Adriano", "Dantas", 1), new Pessoa("Adriano", "Dantas", 1), new Pessoa("Felipe", "Coelho" ,3), new Pessoa("Joao", "Silva", 7), new Pessoa("Cesar", "Castilho", 8));
+		List<Pessoa> listPessoa = Arrays.asList(new Pessoa("Adriano", "Dantas", 10), new Pessoa("Adriano", "Dantas", 10), new Pessoa("Felipe", "Coelho" ,3), new Pessoa("Joao", "Silva", 7), new Pessoa("Cesar", "Castilho", 8));
 		List<Pessoa2> listPessoa2 = Arrays.asList(new Pessoa2("Adriano", "Dantas"), new Pessoa2("Adriano", "Dantas"), new Pessoa2("Felipe", "Coelho"), new Pessoa2("Joao", "Silva"), new Pessoa2("Cesar", "Castilho"));
 		
+		System.out.println("Classe Pessoa implementa Comparable para ordenar a lista pela idade da pessoa");
+		Collections.sort(listPessoa);		
 		listPessoa.forEach((Pessoa p) -> {
 			Pessoa pessoa = new Pessoa();
 			pessoa.setNome(p.getNome());
@@ -27,7 +31,8 @@ public class ListPessoas {
 		});
 		
 		System.out.println("------------------------------------------------------------------------------");
-		 List<Pessoa2> retorno = listaOrdenadaMenosCodigo(listPessoa2);
+		System.out.println("Uso o método sort de que ArrayList contém e que recebe um comparator como parametro para ordenar a lista ");
+		List<Pessoa2> retorno = listaOrdenadaMenosCodigoComparator(listPessoa2);
 		 
 		 retorno.forEach((Pessoa2 p) -> {
 			String nome = p.getNome();
@@ -36,18 +41,15 @@ public class ListPessoas {
 		
 	}
 	
-	/**
-	 * 
-	 * @param palavras
-	 * @return
-	 */
-	private static List<Pessoa2> listaOrdenadaMenosCodigo(List<Pessoa2> listPessoa2) {
+	
+	private static List<Pessoa2> listaOrdenadaMenosCodigoComparator(List<Pessoa2> listPessoa2) {
 
 		Comparator<Pessoa2> comparator = (p1, p2) -> 
 			 Integer.compare(p1.getNome().length(), p2.getNome().length());
 		
-			 listPessoa2.sort(comparator);
+			 //listPessoa2.sort(comparator);
+			 //ou
+			Collections.sort(listPessoa2, (p1, p2) -> Integer.compare(p1.getNome().length(), p2.getNome().length()));
 		return listPessoa2;
 	}
-
 }

@@ -14,7 +14,7 @@ public class DiaSemanaTeste {
 		System.out.println("----------------------------------------------------------------------------------");
 		
 		//retona um enum contendo o valor da string passada como parametro
-		DiaSemana dia = DiaSemana.valueOf(DiaSemana.class, "QUARTA");
+		int dia = DiaSemana.valueOf(DiaSemana.class, "QUARTA").getValor();
 		System.out.println("Objeto enum : " + dia);
 	}
 
